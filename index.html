@@ -3,33 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casamento | Jessica & Leonardo</title>
+    <title>Jessica & Leonardo | Casamento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Exemplo: Importando uma fonte elegante do Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Navegação Superior -->
-    <nav>
-        <ul>
-            <li><a href="#historia">Nossa História</a></li>
-            <li><a href="#detalhes">O Casamento</a></li>
-            <li><a href="#presentes">Lista de Presentes</a></li>
-            <li><a href="#rsvp">Presença</a></li>
-        </ul>
-    </nav>
+    <header id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">J & L</a>
+            <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#historia">Nossa História</a></li>
+                    <li><a href="#casamento">O Casamento</a></li>
+                    <li><a href="#presentes">Lista de Presentes</a></li>
+                    <li><a href="#rsvp">Confirmar Presença</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <!-- Seção Principal (Capa) -->
-    <section id="home" class="hero">
+    <section id="home" class="hero-section">
         <div class="hero-content">
-            <h1>Jessica & Leonardo</h1>
-            <p class="data">07 . 11 . 2026</p>
-            <p class="local">Curitiba, PR</p>
+            <p class="hero-subtitle">Convidamos você para celebrar o nosso casamento</p>
+            <h1 class="hero-title">Jessica & Leonardo</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-date">07 . 11 . 2026</p>
+            <p class="hero-location">Curitiba, PR</p>
+        </div>
+        <div class="scroll-arrow">&#x2193;</div>
+    </section>
+
+    <section id="historia" class="section-padding">
+        <div class="container animate-fade">
+            <span class="section-subtitle">O início de tudo</span>
+            <h2 class="section-title">Nossa História</h2>
+            <div class="text-block">
+                <p>Construímos uma história baseada no companheirismo, no respeito e em muitos sonhos compartilhados. Cada passo que demos até aqui nos trouxe a certeza de que queremos caminhar juntos pelo resto de nossas vidas.</p>
+                <p>Estamos preparando cada detalhe desse grande dia com muito carinho para celebrar o amor ao lado das pessoas que fazem a nossa vida mais feliz.</p>
+            </div>
         </div>
     </section>
 
-    <!-- As demais seções viriam aqui... -->
+    <section id="casamento" class="section-padding bg-alt">
+        <div class="container animate-fade">
+            <span class="section-subtitle">Programação</span>
+            <h2 class="section-title">O Casamento</h2>
+            
+            <div class="details-grid">
+                <div class="details-card">
+                    <h3>Cerimônia & Festa</h3>
+                    <p class="time">Sábado, às 17h00</p>
+                    <p class="location-name">Espaço de Eventos Curitiba</p>
+                    <p class="address">Av. Principal de Santa Felicidade, Curitiba - PR</p>
+                    <a href="https://maps.google.com" target="_blank" class="btn-link">Ver no Google Maps</a>
+                </div>
+
+                <div class="details-card">
+                    <h3>Traje Recomendado</h3>
+                    <p class="style-name">Esporte Fino / Passeio</p>
+                    <p class="description">Queremos que você se sinta confortável para comemorar e dançar a noite toda conosco!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="presentes" class="section-padding">
+        <div class="container animate-fade">
+            <span class="section-subtitle">Mimos para os noivos</span>
+            <h2 class="section-title">Lista de Presentes</h2>
+            <p class="section-intro">Sua presença é o nosso maior presente. Caso queira nos homenagear com algo a mais, criamos uma lista de presentes simbólicos em formato de cotas para a nossa lua de mel e montagem do nosso lar.</p>
+            
+            <a href="https://lista.exemplo.com" target="_blank" class="btn-primary">Acessar Lista de Presentes</a>
+        </div>
+    </section>
+
+    <section id="rsvp" class="section-padding bg-alt">
+        <div class="container animate-fade">
+            <span class="section-subtitle">R.S.V.P</span>
+            <h2 class="section-title">Confirmar Presença</h2>
+            <p class="section-intro">Para nos ajudar a organizar tudo perfeitamente, por favor confirme sua presença até o dia <b>07 de Outubro de 2026</b>.</p>
+            
+            <form id="form-rsvp" class="rsvp-form">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Ex: João Silva">
+                </div>
+                
+                <div class="form-group">
+                    <label for="status">Você comparecerá?</label>
+                    <select id="status" name="status" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="sim">Sim, com certeza!</option>
+                        <option value="nao">Infelizmente não poderei ir</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Mensagem para os noivos (Opcional)</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Deixe um recado carinhoso..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Enviar Confirmação</button>
+                <div id="form-feedback" class="form-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>Jessica & Leonardo &bull; 2026</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

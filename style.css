@@ -1,23 +1,406 @@
-body, html {
+/* ==========================================================================
+   VARS, RESETS E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+:root {
+    --bg-primary: #FAF8F5;    /* Off-white clássico e aconchegante */
+    --bg-secondary: #F3EFEA;  /* Tom levemente mais escuro para alternar seções */
+    --text-main: #3D3D3D;     /* Cinza grafite escuro (mais sofisticado que preto puro) */
+    --text-muted: #7A7A7A;    /* Cinza médio para subtítulos e descrições secundárias */
+    --accent-color: #8C9A86;  /* Verde oliva desaturado, elegante para destaques */
+    --accent-dark: #6E7B69;   /* Tom oliva mais escuro para estados de hover */
+    --white: #FFFFFF;
+    
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Lato', sans-serif;
-    scroll-behavior: smooth; /* Faz a âncora do menu descer suavemente */
+    box-sizing: border-box;
 }
 
-h1, h2 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
+html {
+    scroll-behavior: smooth;
 }
 
-.hero {
-    height: 100vh; /* Ocupa a tela inteira do celular/monitor */
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==========================================================================
+   MENU DE NAVEGAÇÃO (FIXO)
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(250, 248, 245, 0.95);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    z-index: 1000;
+    transition: padding 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: var(--accent-color);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   SEÇÃO HERO (CAPA)
+   ========================================================================== */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url('sua-foto-pre-wedding.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white; /* Ou a cor que combinar com a paleta */
+    padding: 0 20px;
+    position: relative;
+    /* Linha abaixo adiciona uma camada escura suave sobre uma foto conceitual de casamento */
+    background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), 
+                url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1920') center/cover no-repeat;
+    color: var(--white);
+}
+
+.hero-content {
+    animation: fadeInIntro 1.5s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 4.5rem;
+    font-weight: 300;
+    margin-bottom: 25px;
+    line-height: 1.1;
+}
+
+.hero-divider {
+    width: 60px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 0 auto 25px auto;
+}
+
+.hero-date {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.hero-location {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+
+.scroll-arrow {
+    position: absolute;
+    bottom: 30px;
+    font-size: 1.2rem;
+    animation: bounce 2s infinite;
+}
+
+/* ==========================================================================
+   ESTRUTURA DAS SEÇÕES INTERNAS
+   ========================================================================== */
+.section-padding {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.bg-alt {
+    background-color: var(--bg-secondary);
+}
+
+.section-subtitle {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--text-main);
+    margin-bottom: 40px;
+}
+
+.text-block p {
+    font-size: 1.05rem;
+    max-width: 650px;
+    margin: 0 auto 25px auto;
+    color: var(--text-main);
+    font-weight: 300;
+}
+
+.section-intro {
+    font-size: 1.1rem;
+    max-width: 650px;
+    margin: 0 auto 40px auto;
+    font-weight: 300;
+}
+
+/* Grids e Cards do Casamento */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.details-card {
+    background-color: var(--white);
+    padding: 40px 30px;
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.details-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.details-card .time {
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.details-card .location-name {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.details-card .address {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   COMPONENTES DE BOTÕES E LINKS
+   ========================================================================== */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 14px 36px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-dark);
+}
+
+.btn-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   FORMULÁRIO RSVP
+   ========================================================================== */
+.rsvp-form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: var(--white);
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E0E0E0;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.form-message {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   RODAPÉ E ANIMAÇÕES
+   ========================================================================== */
+footer {
+    padding: 40px 0;
+    text-align: center;
+    background-color: var(--text-main);
+    color: var(--bg-primary);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+@keyframes fadeInIntro {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Classes utilitárias do Intersection Observer */
+.animate-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.animate-fade.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE / CELULARES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-title { font-size: 3rem; }
+    .section-title { font-size: 2.3rem; }
+    
+    .menu-toggle { display: block; }
+    
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-primary);
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    
+    .nav-menu.active { display: block; }
+    
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .section-padding { padding: 70px 0; }
+    .rsvp-form { padding: 25px; }
 }
