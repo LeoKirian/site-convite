@@ -1,0 +1,23 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    scroll-behavior: smooth; /* Faz a âncora do menu descer suavemente */
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+.hero {
+    height: 100vh; /* Ocupa a tela inteira do celular/monitor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('sua-foto-pre-wedding.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white; /* Ou a cor que combinar com a paleta */
+}
